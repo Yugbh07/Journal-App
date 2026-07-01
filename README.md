@@ -38,7 +38,8 @@ src/main/java/com/example/journelApp/
 ├── controller/
 │   ├── JournalEntryController.java  # Journal CRUD endpoints
 │   ├── UserController.java          # User management endpoints
-│   └── AdminController.java         # Admin-only endpoints
+│   ├── AdminController.java         # Admin-only endpoints
+│   └── PublicController.java        # Public endpoints (no auth required)
 ├── entity/
 │   ├── JournalEntry.java
 │   └── User.java
