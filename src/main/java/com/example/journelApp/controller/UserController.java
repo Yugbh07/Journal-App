@@ -24,10 +24,11 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping
-    public List<User> getAllUsers(){
-        return userService.getAll();
+    public ResponseEntity<User> getUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByUserName(authentication.getName());
+        return ResponseEntity.ok(user);
     }
-
 
     @PutMapping
     public ResponseEntity<?> updateUser(@RequestBody User user ){

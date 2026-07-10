@@ -5,7 +5,10 @@ import com.example.journelApp.entity.JournalEntry;
 import com.example.journelApp.entity.User;
 import com.example.journelApp.repository.JournalEntryRepository;
 import com.example.journelApp.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -30,7 +34,8 @@ public class UserService {
             userRepository.save(user);
             return true;
         }catch (Exception e){
-         return false;
+            log.error("Error occurred for {}",user.getUserName(),e);
+            return false;
         }
     }
 
